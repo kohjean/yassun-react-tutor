@@ -3,11 +3,7 @@ import { List } from "./List";
 import { Form } from "./Form";
 
 function App() {
-  const [description, setDescription] = useState('クリック前の表示'); // [state, stateを変更する関数] = useState('初期値')
   const [tab, setTab] = useState('list'); 
-  const changeDescription = () => {
-    setDescription('クリック後の表示です');
-  }
   
   return (
     <div>
@@ -18,11 +14,9 @@ function App() {
         </ul>
       </header>
       <hr />
-      { description }
       {
-        tab === 'list' ? <List title="取扱言語一覧"/> : <Form />
+        tab === 'list' ? <List /> : <Form />
       }
-      <button onClick={changeDescription}>ボタン</button>
     </div>
   );
 }
