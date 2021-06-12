@@ -4,6 +4,7 @@ import { List } from "./List";
 import { Form } from "./Form";
 import { getLanguages } from "./const/languages";
 import { SquareBox } from "./components/squareBox";
+import { withLoading } from "./hoc/withLoading";
 
 const Header = styled.header`
   display: flex;
@@ -24,24 +25,10 @@ const HeaderLi = styled.li`
   border-bottom: ${props => props.focused ? '2px solid #f44336' : 'none' }
 `
 
-function App() {
+function App({ data }) {
   const [tab, setTab] = useState('list');
-  const [langs, setLangs] = useState([]);
-  
-  useEffect(() => {
-    console.log('App.js:1');
-    fetchLanguages();
-  }, []) 
-  // useEffectの第二引数は依存する配列を定義できる。
-  // 空の配列を入れるとmountingの時だけ起こるようになる,最初だけイベントを起こしたい時はこうする
-  // [langs]とするとmountの時はとlangs が変更する時に起こる。
-　// [langs, tab]とすると、tabが変更された時にも起こるようになる。
+  const [langs, setLangs] = useState(data);
 
-  const fetchLanguages = async () => {
-    const languages = await getLanguages();
-    console.log(4);
-    setLangs(languages);
-  }
 
   const addLang = (lang) => {
     setLangs([...langs, lang]);
@@ -63,4 +50,4 @@ function App() {
   );
 }
 
-export default App;
+export default withLoading(App, getLanguages);
