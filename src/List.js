@@ -1,9 +1,6 @@
 import { useEffect } from "react"
 import styled from 'styled-components';
-
-const Container = styled.div`
-  padding: 12px 64px;
-`
+import { TabBodyContainer } from './components/tab-body-container';
 
 const ListItem = styled.div`
   padding: 8px 16px;
@@ -13,16 +10,16 @@ const ListItem = styled.div`
   }
 `
 
-
-
 export const List = ({ langs }) => {
   return (
-    <Container>
-      {
-        langs.map((lang, index) => {
-          return <ListItem key={index}>{ lang }</ListItem>
-        })
-      }
-    </Container>
+    <TabBodyContainer title="取扱言語リスト">
+      <div>
+        {
+          langs.map((lang, index) => {
+            return <ListItem key={index}>{ lang }</ListItem>
+          })
+        }
+      </div>
+    </TabBodyContainer>
   )
 }
