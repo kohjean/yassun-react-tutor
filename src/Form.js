@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import { Button } from './components/button';
 import { TabBodyContainer } from './components/tab-body-container';
+import { Hint } from './Hint';
 
 const Label = styled.label`
   display: flex;
@@ -41,6 +42,7 @@ export const Form = ({ onAddLang }) => {
             value={text}
             onChange={(e) => setText(e.target.value)} 
           />
+          <Hint />
         </div>
         <ButtonContainer>
           <Button>追加</Button>
