@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
 const modalRoot = document.getElementById("modal-root");
@@ -20,6 +21,6 @@ export const Modal = (props) => {
     <Container>
       { props.children }
     </Container>,
-    modalRoot,
+    modalRoot
   )
 }
